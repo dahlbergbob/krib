@@ -1,0 +1,64 @@
+apply plugin: 'com.android.library'
+
+
+ext {
+	bintrayRepo = 'Krib'
+	bintrayName = 'krib'
+
+	publishedGroupId = 'se.accepted.krib'
+	libraryName = 'Krib'
+	artifact = 'krib'
+
+	libraryDescription = 'A utility micro-library for inversion of control'
+
+	siteUrl = 'https://github.com/dahlbergbob/krib'
+	gitUrl = 'https://github.com/dahlbergbob/krib.git'
+
+	libraryVersion = '1.0.0'
+
+	developerId = 'dahlbergbob'
+	developerName = 'Bob Dahlberg'
+	developerEmail = 'dahlberg.bob@gmail.com'
+
+	licenseName = 'MIT License'
+	licenseUrl = 'http://www.opensource.org/licenses/mit-license.php'
+	allLicenses = ["MIT"]
+}
+
+tasks.withType(Javadoc) {
+	//options.addBooleanOption('Xdoclint:none', true)
+	excludes = ['**/*.kt'] // Exclude all kotlin files from javadoc file.
+}
+
+android {
+	compileSdkVersion 26
+	buildToolsVersion "25.0.3"
+
+	defaultConfig {
+		minSdkVersion 7
+		targetSdkVersion 26
+		versionCode 1
+		versionName "1.0.0"
+
+		testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+	}
+	buildTypes {
+		release {
+			minifyEnabled false
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+		}
+	}
+}
+
+dependencies {
+	compile fileTree(dir: 'libs', include: ['*.jar'])
+	compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+	compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+	testCompile 'junit:junit:4.12'
+}
+
+// Place it at the end of the file
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+//apply plugin: 'com.github.dcendents.android-maven'
