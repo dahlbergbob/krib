@@ -11,9 +11,6 @@ jobs:
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "krib/build.gradle" }}
       - run:
-          name: Fix local properties
-          command: android update project -p .
-      - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
       - save_cache:
