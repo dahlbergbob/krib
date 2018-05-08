@@ -1,0 +1,37 @@
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+apply from: 'gradle.properties'
+
+ext {
+	groupId = 'se.accepted.krib'
+	artifactId = 'krib'
+	libVersion = '1.0.1'
+}
+
+bintray {
+	user = user
+	key = apiKey
+	configurations = ['archives']
+	publish = true
+	override = true
+
+	pkg {
+		repo = "Krib"
+		repo = "krib"
+		version {
+			name = libVersion
+		}
+	}
+}
+
+install {
+	repositories.mavenInstaller {
+		pom.project {
+			packaging 'aar'
+			groupId groupId
+			artifactId artifactId
+			version libVersion
+			name artifactId
+		}
+	}
+}

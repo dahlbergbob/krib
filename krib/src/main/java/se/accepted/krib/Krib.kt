@@ -31,7 +31,7 @@ class Krib :IKrib {
         if( aliasMap.contains( alias ) ) {
             throw VerifyError( "Can't add several implementation types mapped to the same alias: $alias" )
         }
-        aliasMap.put( alias, clazz )
+        aliasMap[alias] = clazz
     }
     
     /**
@@ -44,8 +44,8 @@ class Krib :IKrib {
         if( aliasMap.contains( alias ) ) {
             throw VerifyError( "Can't add several implementation types mapped to the same alias: $alias" )
         }
-        aliasNewMap.put( alias, clazz )
-        aliasMap.put( alias, clazz )
+        aliasNewMap[alias] = clazz
+        aliasMap[alias] = clazz
     }
     
     /**
@@ -55,7 +55,7 @@ class Krib :IKrib {
      */
     override fun <I:Any,IM:I> addInstance( instance:IM, alias:KClass<I>) {
         add( instance::class, alias )
-        instanceMap.put( instance::class, instance )
+        instanceMap[instance::class] = instance
     }
     
     /**

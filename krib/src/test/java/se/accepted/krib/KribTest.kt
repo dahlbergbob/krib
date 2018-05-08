@@ -2,10 +2,10 @@ package se.accepted.krib
 
 import junit.framework.TestCase
 
-class KribTest():TestCase() {
+class KribTest(): TestCase() {
 	
 	private var crib:Krib = Krib()
-    private val myLazy by inject<IMarker>( from = crib )
+    //private val myLazy by inject<IMarker>( from = crib )
 
     override fun setUp() {
         super.setUp()

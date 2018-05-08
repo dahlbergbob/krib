@@ -15,4 +15,4 @@ object App{
 inline fun <reified T:Any> inject() = lazy { App.krib.require( T::class ) }
 
 // Use if you need to inject the proper krib instance to require from
-inline fun <reified T:Any> inject( from:Krib ) = lazy { from.require( T::class ) }
+//inline fun <reified T:Any> inject( from:Krib ) = lazy { from.require( T::class ) }
